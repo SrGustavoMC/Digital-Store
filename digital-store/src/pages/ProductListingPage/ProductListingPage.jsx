@@ -4,8 +4,8 @@ import ProductListing from '../../components/ProductListing/ProductListing';
 import FilterGroup from '../../components/FilterGroup/FilterGroup';
 
 const ProductListingPage = () => {
-  // Simulação de muitos produtos para encher a tela
-  const products = Array(12).fill({
+  // Simulação de muitos produtos
+  const products = Array(15).fill({
     id: 1, 
     name: "K-Swiss V8 - Masculino", 
     image: "https://raw.githubusercontent.com/digitalcollegebr/projeto-digital-store/main/public/produc-image-1.jpeg", 
@@ -16,15 +16,11 @@ const ProductListingPage = () => {
   return (
     <div className="container mx-auto px-5 md:px-10 py-10">
       
-      {/* Cabeçalho da Listagem (Ordenação) */}
-      <div className="flex flex-col md:flex-row justify-between items-center mb-10 gap-4">
-         <p className="text-dark-gray-2 font-bold">
-            Resultados para "Tênis" - <span className="font-normal">389 produtos</span>
-         </p>
-         
-         <div className="flex items-center gap-4 border border-dark-gray text-dark-gray-2 px-4 py-3 rounded">
+      {/* Container "Ordenar por" isolado no topo à direita */}
+      <div className="flex justify-end mb-8">
+         <div className="flex items-center gap-4 border border-dark-gray text-dark-gray-2 px-4 py-3 rounded w-full md:w-[330px]">
             <label className="font-bold text-sm">Ordenar por:</label>
-            <select className="bg-transparent outline-none font-normal text-sm cursor-pointer">
+            <select className="bg-transparent outline-none font-normal text-sm cursor-pointer w-full">
                <option>Mais relevantes</option>
                <option>Menor preço</option>
                <option>Maior preço</option>
@@ -42,48 +38,30 @@ const ProductListingPage = () => {
            <FilterGroup 
              title="Marca" 
              inputType="checkbox"
-             options={[
-               { text: "Adidas" },
-               { text: "Nike" },
-               { text: "Puma" },
-               { text: "K-Swiss" },
-             ]}
+             options={[ { text: "Adidas" }, { text: "Nike" }, { text: "Puma" }, { text: "K-Swiss" } ]}
            />
-
            <FilterGroup 
              title="Categoria" 
              inputType="checkbox"
-             options={[
-               { text: "Esporte e lazer" },
-               { text: "Casual" },
-               { text: "Utilitário" },
-               { text: "Corrida" },
-             ]}
+             options={[ { text: "Esporte e lazer" }, { text: "Casual" }, { text: "Utilitário" }, { text: "Corrida" } ]}
            />
-
            <FilterGroup 
              title="Gênero" 
              inputType="checkbox"
-             options={[
-               { text: "Masculino" },
-               { text: "Feminino" },
-               { text: "Unissex" },
-             ]}
+             options={[ { text: "Masculino" }, { text: "Feminino" }, { text: "Unissex" } ]}
            />
-
            <FilterGroup 
              title="Estado" 
              inputType="radio"
-             options={[
-               { text: "Novo" },
-               { text: "Usado" },
-             ]}
+             options={[ { text: "Novo" }, { text: "Usado" } ]}
            />
         </aside>
 
-        {/* GRADE DE PRODUTOS */}
+        {/* GRADE DE PRODUTOS CORRIGIDA (REQUISITO 6.3) */}
         <main className="flex-1">
-           <ProductListing products={products} />
+           <Section title="Resultados para 'Tênis' - 389 produtos" titleAlign="left">
+             <ProductListing products={products} />
+           </Section>
         </main>
 
       </div>
